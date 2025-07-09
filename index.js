@@ -5,6 +5,8 @@ require("dotenv").config();
 require("./config/db");
 const productRouter = require("./router/user.router");
 
+const port = process.env.PORT || 3300;
+
 const isProduction = process.env.NODE_ENV === "production";
 const frontendURL = isProduction
   ? "https://ecommerce-wtfz.vercel.app/"
@@ -25,6 +27,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/product", productRouter);
 
-app.listen(process.env.PORT, () => {
-  console.log(`currently running on PORT ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`currently running on PORT ${port}`);
 });
