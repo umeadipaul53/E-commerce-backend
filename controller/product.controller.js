@@ -38,7 +38,7 @@ const getAllProduct = async (req, res) => {
 
 const getOneProduct = async (req, res) => {
   try {
-    const { id } = req.query;
+    const { id } = req.params;
 
     if (!id) {
       return res.status(400).json({ message: "Product ID is required" });
