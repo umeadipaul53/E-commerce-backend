@@ -10,26 +10,14 @@ const port = process.env.PORT || 3300;
 const isProduction = process.env.NODE_ENV === "production";
 const frontendURL = isProduction
   ? "https://ecom-iota-gules.vercel.app"
-  : "http://localhost:3300";
-
-const allowedOrigins = [
-  "https://ecom-iota-gules.vercel.app",
-  "http://localhost:3300",
-];
+  : "http://localhost:5173";
 
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: frontendURL,
+    credentials: true, // must match with Axios `withCredentials: true`
   })
 );
-
-// app.use(
-//   cors({
-//     origin: frontendURL,
-//     credentials: true, // must match with Axios `withCredentials: true`
-//   })
-// );
 
 app.get("/", (req, res) => {
   res.json({
